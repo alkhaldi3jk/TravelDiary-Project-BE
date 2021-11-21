@@ -34,3 +34,5 @@ exports.signin = (req, res, next) => {
   const token = generateToken(req.user);
   res.json({ token });
 };
+
+
