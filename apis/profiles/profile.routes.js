@@ -21,15 +21,15 @@ router.param("profile", async (req, res, next, userId) => {
 });
 
 router.get(
-  "",
+  "/",
   //   upload.single("image"),
-  //   passport.authenticate("local", { session: false }),
+    // passport.authenticate("jwt", { session: false }),
   profileList
 );
 
 router.get(
-  "/",
-//   passport.authenticate("local", { session: false }),
+  "/:userId",
+  passport.authenticate("jwt", { session: false }),
   profileFetch
 );
 
