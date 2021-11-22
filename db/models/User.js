@@ -10,8 +10,13 @@ const UserSchema = new mongoose.Schema({
     // unique: true,
   },
 
-  // profile: { type: mongoose.Schema.Types.ObjectId, ref: "Profile" },
-
+  profile: { type: mongoose.Schema.Types.ObjectId, ref: "Profile" },
+  trip: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Trip",
+    },
+  ],
   // profile:{
   //     name:{type: String},
   //     age:{type: Number},
