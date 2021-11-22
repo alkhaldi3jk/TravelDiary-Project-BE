@@ -39,3 +39,28 @@ exports.tripListFetch = async (req, res, next) => {
     }
   };
   
+  exports.tripUpdate = async (req, res, next) => {
+    try {
+      if (req.file) {
+        req.body.image = `/${req.file.path}`;
+      }
+      const trip = await Trip.findByIdAndUpdate(
+        req.trip,
+        req.body,
+        { new: true, runValidators: true } // returns the updated product
+      )
+      // .populate("user");
+      return res.status(200).json(trip);
+    } catch (error) {
+      next(error);
+    }
+  };
+  
+  exports.tripDelete = async (req, res, next) => {
+    try {
+      await req.trip.remove();
+      res.status(204).end();
+    } catch (error) {
+      next(error);
+    }
+  };
