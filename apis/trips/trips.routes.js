@@ -13,7 +13,7 @@ const router = express.Router();
 
 // Param Middleware
 router.param("tripId", async (req, res, next, tripId) => {
-  const trip = await fetchProduct(tripId, next);
+  const trip = await fetchTrip(tripId, next);
   if (trip) {
     req.trip = trip;
     next();
@@ -24,6 +24,8 @@ router.param("tripId", async (req, res, next, tripId) => {
 
 router.get("/", tripListFetch);
 
+router.get("/:tripId", fetchTrip);
+
 router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
@@ -31,10 +33,10 @@ router.post(
   tripCreate
 );
 
-router.post(
+router.put(
   "/:tripId",
-  passport.authenticate("jwt", { session: false }),
-  upload.single("image"),
+  // passport.authenticate("jwt", { session: false }),
+  // upload.single("image"),
   tripUpdate
 );
 router.delete(

@@ -1,21 +1,23 @@
 const Trip = require("../../db/models/Trip");
 
-// exports.fetchTrip = async (tripId, next) => {
-//   try {
-//     const trip = await Trip.findById(tripId);
-//     return trip;
-//   } catch (error) {
-//     // next(error);
-//     console.log(error)
-//   }
-// };
+exports.fetchTrip = async (tripId, next) => {
+  try {
+    const trip = await Trip.findById(tripId);
+    return trip;
+  } catch (error) {
+    // next(error);
+    console.log(error)
+  }
+};
 
 exports.tripListFetch = async (req, res, next) => {
     try {
-      const trips = await Trip.find().populate("products");
+      const trips = await Trip.find()
+      // .populate("user");
       return res.json(trips);
     } catch (error) {
-      next(error);
+      console.log(error)
+      // next(error);
       // return res.status(500).json({ message: error.message });
     }
   };
@@ -35,7 +37,8 @@ exports.tripListFetch = async (req, res, next) => {
       });
       return res.status(201).json(newTrip);
     } catch (error) {
-      next(error);
+      console.log(error)
+      // next(error);
     }
   };
   
@@ -52,7 +55,8 @@ exports.tripListFetch = async (req, res, next) => {
       // .populate("user");
       return res.status(200).json(trip);
     } catch (error) {
-      next(error);
+      console.log(error)
+      // next(error);
     }
   };
   
@@ -61,6 +65,7 @@ exports.tripListFetch = async (req, res, next) => {
       await req.trip.remove();
       res.status(204).end();
     } catch (error) {
-      next(error);
+      console.log(error)
+      // next(error);
     }
   };
