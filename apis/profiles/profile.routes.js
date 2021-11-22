@@ -1,6 +1,6 @@
 const express = require("express");
 const passport = require("passport");
-const { profileFetch, profileCreate } = require("./profile.controllers");
+const { profileFetch, profileCreate,profileList } = require("./profile.controllers");
 const upload = require("../../middleware/multer");
 
 // Create a mini express application
@@ -16,12 +16,12 @@ router.param("profile", async (req, res, next, userId) => {
   }
 });
 
-// router.post(
-//   "/profile",
-// //   upload.single("image"),
-// //   passport.authenticate("local", { session: false }),
-//   profileCreate
-// );
+router.get(
+  "",
+//   upload.single("image"),
+//   passport.authenticate("local", { session: false }),
+profileList
+);
 
 router.get(
   "/me",
