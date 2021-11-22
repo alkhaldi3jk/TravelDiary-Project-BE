@@ -1,4 +1,13 @@
 {
+  "name": "TravelDiary-Project-BE",
+  "version": "1.0.0",
+  "main": "app.js",
+  "repository": "git@github.com:alkhaldi3jk/TravelDiary-Project-BE.git",
+  "author": "Abdallah Alkhaldi <alkhaldi3jk@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
@@ -11,14 +20,5 @@
     "passport": "^0.5.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0"
-  },
-  "scripts": {
-    "start": "nodemon app.js"
-  },
-  "name": "TravelDiary-Project-BE",
-  "version": "1.0.0",
-  "main": "app.js",
-  "repository": "git@github.com:alkhaldi3jk/TravelDiary-Project-BE.git",
-  "author": "Abdallah Alkhaldi <alkhaldi3jk@gmail.com>",
-  "license": "MIT"
+  }
 }

@@ -16,16 +16,16 @@ router.param("profile", async (req, res, next, userId) => {
   }
 });
 
-router.post(
-  "/profile",
-//   upload.single("image"),
-//   passport.authenticate("local", { session: false }),
-  profileCreate
-);
+// router.post(
+//   "/profile",
+// //   upload.single("image"),
+// //   passport.authenticate("local", { session: false }),
+//   profileCreate
+// );
 
 router.get(
-  "/profile",
-  //   passport.authenticate("local", { session: false }),
+  "/me",
+    // passport.authenticate("local", { session: false }),
   profileFetch
 );
 
