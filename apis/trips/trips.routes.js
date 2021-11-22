@@ -7,6 +7,7 @@ const {
   tripDelete,
   tripListFetch,
   tripCreate,
+  tripDetailFetch
 } = require("./trips.controller");
 
 const router = express.Router();
@@ -32,6 +33,8 @@ router.post(
   upload.single("image"),
   tripCreate
 );
+
+router.get("/:tripId", tripDetailFetch);
 
 router.put(
   "/:tripId",
