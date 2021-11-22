@@ -1,25 +1,42 @@
-const { model, Schema } = require("mongoose");
 const mongoose = require("mongoose");
-const mongooseSlugPlugin = require("mongoose-slug-plugin");
 
-
-const ProfileSchema = new Schema(
+const ProfileSchema = new mongoose.Schema(
   {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
     name: { type: String },
-    slug: String,
+    slug: { type: String },
     age: { type: Number },
     image: { type: String },
     trips: { type: String },
-
-    owner: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+    bio: { type: String },
+    hobbies: { type: [String] },
+    experience: [
+      {
+        title: { type: String },
+        location: { type: String },
+        from: { type: Date },
+        to: { type: Date },
+        description: { type: String },
+      },
+    ],
+    social: {
+      youtube: {
+        type: String,
+      },
+      twitter: {},
+      facebook: {
+        type: String,
+      },
+      instagram: {
+        type: String,
+      },
     },
   },
   { timeStamps: true }
 );
 
-ProfileSchema.plugin(mongooseSlugPlugin, { tmpl: "<%=name%>" });
 
-
-module.exports = model("Profile", ProfileSchema);
+module.exports = mongoose.model("Profile", ProfileSchema);
