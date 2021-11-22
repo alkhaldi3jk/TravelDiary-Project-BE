@@ -42,6 +42,11 @@ exports.tripListFetch = async (req, res, next) => {
     }
   };
   
+  exports.tripDetailFetch = async (req, res, next) => {
+    console.log("trip", req.trip.id);
+    res.status(200).json(req.trip);
+  };
+
   exports.tripUpdate = async (req, res, next) => {
     try {
       if (req.file) {
