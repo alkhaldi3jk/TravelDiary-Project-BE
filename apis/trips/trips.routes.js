@@ -24,7 +24,7 @@ router.param("tripId", async (req, res, next, tripId) => {
 
 router.get("/", tripListFetch);
 
-router.get("/:tripId", fetchTrip);
+router.get("/", fetchTrip);
 
 router.post(
   "/",
