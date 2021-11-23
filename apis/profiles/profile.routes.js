@@ -23,10 +23,10 @@ router.param("profile", async (req, res, next, userId) => {
 router.get(
   "/",
   //   upload.single("image"),
-    // passport.authenticate("jwt", { session: false }),
+  // passport.authenticate("jwt", { session: false }),
   profileList
 );
-
+// REVIEW: We NEVER pass the user ID in the URL, this is not safe. We get the user from the token
 router.get(
   "/:userId",
   passport.authenticate("jwt", { session: false }),

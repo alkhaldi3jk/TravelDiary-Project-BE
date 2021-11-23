@@ -1,5 +1,6 @@
 const Profile = require("../../db/models/Profile");
 const User = require("../../db/models/User");
+// REVIEW: Remove unused imports
 
 exports.profileList = async (req, res, next) => {
   try {
@@ -12,9 +13,11 @@ exports.profileList = async (req, res, next) => {
 
 exports.profileFetch = async (req, res, next) => {
   try {
+    // REVIEW: Remove commented out code
     // var user = req.body.user._id;
     const profile = await Profile.findOne({ _id: req.user._id });
     //   .populate("user",['name']);
+    // REVIEW: you dont need this, since very user when you create it you're creating a  profile with it
     if (!profile) {
       return res.status(400).json({ msg: "the is no profile" });
     }
@@ -33,6 +36,7 @@ exports.profileUpdate = async (req, res, next) => {
       req.body.image = `/${req.file.path}`;
     }
     req.body.owner = req.user._id;
+    // REVIEW: I think this has missing fields
     const updatedProfile = await Profile.findOneAndUpdate(req.body);
     await updatedProfile.populate({
       path: "owner",

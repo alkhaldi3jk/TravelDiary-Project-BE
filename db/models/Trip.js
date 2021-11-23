@@ -3,11 +3,12 @@ const mongooseSlugPlugin = require("mongoose-slug-plugin");
 const { model, Schema } = require("mongoose");
 
 const TripSchema = mongoose.Schema({
-    name: { type: String },
+  name: { type: String },
   //   description: {
   //   type: String,
   //   required: true,
   // },
+  // REVIEW: You dont need slug for mobile apps
   slug: String,
   image: { type: String },
   owner: {

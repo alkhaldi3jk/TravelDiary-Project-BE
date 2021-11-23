@@ -12,3 +12,4 @@ const connectDB = async () => {
 };
 
 module.exports = connectDB;
+// REVIEW: This file should be in the gitignore

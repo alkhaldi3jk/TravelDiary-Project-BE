@@ -19,6 +19,7 @@ exports.localStrategy = new LocalStrategy(async (username, password, done) => {
 
     return done(null, false); // throw a 401 error
 
+    // REVIEW: Remove commented out code
     // if (user) {
     //   // validate password
     //   const passwordsMatch = await bcrypt.compare(password, user.password);

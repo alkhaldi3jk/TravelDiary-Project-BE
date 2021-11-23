@@ -7,9 +7,11 @@ const ProfileSchema = new mongoose.Schema(
       ref: "User",
     },
     name: { type: String },
+    // REVIEW: You dont need slug for mobile apps
     slug: { type: String },
     age: { type: Number },
     image: { type: String },
+    // REVIEW: Is trips a string??
     trips: { type: String },
     bio: { type: String },
     hobbies: { type: [String] },
@@ -37,6 +39,5 @@ const ProfileSchema = new mongoose.Schema(
   },
   { timeStamps: true }
 );
-
 
 module.exports = mongoose.model("Profile", ProfileSchema);

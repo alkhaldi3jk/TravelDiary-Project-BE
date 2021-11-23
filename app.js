@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const connectDB = require("./db/database");
 const path = require("path");
 const passport = require("passport");
+// REVIEW: Always put all your requires first before calling any function
 connectDB();
 const userRoutes = require("./apis/users/users.routes");
 const profileRoutes = require("./apis/profiles/profile.routes");
@@ -30,8 +31,10 @@ passport.use(jwtStrategy);
 
 //Routs
 app.use("/api", userRoutes);
+// REVIEW: name should be /api/profiles
 app.use("/api/profile", profileRoutes);
 app.use("/media", express.static(path.join(__dirname, "media")));
+// REVIEW: name should be /api/trips
 app.use("/api/trip", tripRoutes);
 
 app.use((req, res, next) => {
@@ -39,8 +42,6 @@ app.use((req, res, next) => {
 });
 
 app.use(errorHandler);
-
-
 
 app.listen(8005, () => {
   console.log("The application is running on localhost:8005");

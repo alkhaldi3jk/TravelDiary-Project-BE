@@ -7,7 +7,7 @@ const {
   tripDelete,
   tripListFetch,
   tripCreate,
-  tripDetailFetch
+  tripDetailFetch,
 } = require("./trips.controller");
 
 const router = express.Router();
@@ -25,6 +25,7 @@ router.param("tripId", async (req, res, next, tripId) => {
 
 router.get("/", tripListFetch);
 
+// REVIEW: The fetchTrip is not a controller, remove this. You already have the trip detail.
 router.get("/", fetchTrip);
 
 router.post(
@@ -33,7 +34,7 @@ router.post(
   upload.single("image"),
   tripCreate
 );
-
+// REVIEW: Why so you have a detail route? Do you need it?
 router.get("/:tripId", tripDetailFetch);
 
 router.put(
