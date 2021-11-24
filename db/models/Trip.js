@@ -6,8 +6,13 @@ const TripSchema = mongoose.Schema({
     name: { type: String },
     description: {
     type: String,
-    required: true,
+    // required: true,
   },
+  title: {type: String},
+  subtitle: { type: String},
+  from: { type: Date },
+  to: { type: Date },
+
   slug: String,
   image: { type: String },
   owner: {
@@ -15,6 +20,7 @@ const TripSchema = mongoose.Schema({
     ref: "User",
   },
 });
+
 
 TripSchema.plugin(mongooseSlugPlugin, { tmpl: "<%=name%>" });
 
