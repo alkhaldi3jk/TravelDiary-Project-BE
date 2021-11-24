@@ -28,13 +28,13 @@ router.get(
 );
 
 router.get(
-  "/:userId",
+  "/me",
   passport.authenticate("jwt", { session: false }),
   profileFetch
 );
 
 router.put(
-  "/",
+  "/me",
   passport.authenticate("jwt", { session: false }),
   upload.single("image"),
 
