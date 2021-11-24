@@ -4,6 +4,7 @@ const { model, Schema } = require("mongoose");
 
 const TripSchema = mongoose.Schema({
     name: { type: String },
+
     description: {
     type: String,
     // required: true,
@@ -12,6 +13,7 @@ const TripSchema = mongoose.Schema({
   subtitle: { type: String},
   from: { type: Date },
   to: { type: Date },
+
 
   slug: String,
   image: { type: String },
