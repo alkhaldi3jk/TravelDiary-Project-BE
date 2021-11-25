@@ -13,14 +13,21 @@ exports.profileList = async (req, res, next) => {
 exports.profileFetch = async (req, res, next) => {
   try {
     // var user = req.body.user._id;
-    const profile = await Profile.findOne({ user: req.user._id }).populate(
-      "ow",
+    const profile = await Profile.findOne({ owner: req.user._id }).populate(
+      "owner",
       ["name", "image"]
     );
+    res.status(200).json(profile);
+
     if (!profile) {
-      return res.status(400).json({ msg: "the is no profile" });
+      // res.status(200).json(profile);
+      const profile = await Profile.findOne({
+        owner: req.user._id,
+      }).Profile.create(req.body);
+      // .populate("owner");
+
+      res.status(200).json(profile);
     }
-    return res.status(200).json(profile);
   } catch (error) {
     next(error);
     // return res.status(500).json({ message: error.message });
