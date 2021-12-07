@@ -38,8 +38,8 @@ router.get("/:tripId", tripDetailFetch);
 
 router.put(
   "/:tripId",
-  // passport.authenticate("jwt", { session: false }),
-  // upload.single("image"),
+  passport.authenticate("jwt", { session: false }),
+  upload.single("image"),
   tripUpdate
 );
 router.delete(

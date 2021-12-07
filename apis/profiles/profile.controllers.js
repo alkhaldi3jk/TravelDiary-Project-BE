@@ -3,7 +3,8 @@ const User = require("../../db/models/User");
 
 exports.profileList = async (req, res, next) => {
   try {
-    const profile = await Profile.find().populate("owner");
+    const profile = await User.find()
+    // .populate("owner");
     res.json(profile).status(201);
   } catch (error) {
     next(error);
@@ -12,18 +13,19 @@ exports.profileList = async (req, res, next) => {
 
 exports.profileFetch = async (req, res, next) => {
   try {
-    // var user = req.body.user._id;
-    const profile = await Profile.findOne({ owner: req.user._id }).populate(
-      "owner",
+    const profile = await User.findOne({ profile: req.user._id }).populate(
+      "profile",
       ["name", "image"]
     );
+    console.log(profile);
+
     res.status(200).json(profile);
 
     if (!profile) {
       // res.status(200).json(profile);
-      const profile = await Profile.findOne({
-        owner: req.user._id,
-      }).Profile.create(req.body);
+      const profile = await User.findOne({
+        profile: req.user._id,
+      }).User.create(req.body);
       // .populate("owner");
 
       res.status(200).json(profile);
@@ -41,12 +43,13 @@ exports.profileUpdate = async (req, res, next) => {
       // req.body.image = `/${req.file.path}`;
       req.body.image = `/${req.file.path}`;
     }
-    req.body.owner = req.user._id;
-    const updatedProfile = await Profile.findOneAndUpdate(req.body);
+    // req.body.user = req.user._id;
+    const updatedProfile = await User.findOneAndUpdate(req.body);
     await updatedProfile.populate({
-      path: "owner",
-      select: "username",
+      path: "profile",
+      select: "name",
     });
+    
     return res.status(201).json(updatedProfile);
   } catch (error) {
     console.log(error);
